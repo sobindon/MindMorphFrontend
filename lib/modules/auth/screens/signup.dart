@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 
 import 'package:lottie/lottie.dart';
 import 'package:mindmorph/modules/auth/models/signup.dart';
+import 'package:mindmorph/widgets/snackbar.dart';
 import '../repositories/signup.dart';
 import '/constants/color.dart';
 import '/constants/fonts.dart';
@@ -169,19 +170,19 @@ class _SignupState extends State<Signup> {
                         20.heightBox,
                         TextButton(
                             style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
+                              backgroundColor: WidgetStateProperty.all<Color>(
                                   const Color.fromARGB(255, 24, 35, 115)),
                               padding:
-                                  MaterialStateProperty.all<EdgeInsetsGeometry>(
+                                  WidgetStateProperty.all<EdgeInsetsGeometry>(
                                 const EdgeInsets.symmetric(
                                     horizontal: 20.0, vertical: 10.0),
                               ),
-                              shape: MaterialStateProperty.all<OutlinedBorder>(
+                              shape: WidgetStateProperty.all<OutlinedBorder>(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                               ),
-                              minimumSize: MaterialStateProperty.all<Size>(
+                              minimumSize: WidgetStateProperty.all<Size>(
                                 const Size(200.0,
                                     40.0), // Adjust the width and height as needed
                               ),
@@ -202,17 +203,19 @@ class _SignupState extends State<Signup> {
                                     onPressed: () => context.go('/login'),
                                   ),
                                 );
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
                                 Timer(const Duration(seconds: 3),
                                     () => context.go('/login'));
+                              } else if (response.status == 500) {
+                                mindMorphSnackBar(
+                                    context: context,
+                                    message: 'Image size is Large ');
                               } else {
-                                snackBar = SnackBar(
-                                    backgroundColor: Colors.red,
-                                    content: Text(response.message,
-                                        style: const TextStyle(
-                                            color: Colors.white)));
+                                mindMorphSnackBar(
+                                    context: context,
+                                    message: response.message);
                               }
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(snackBar);
                             },
                             child: 'Sign Up'
                                 .text

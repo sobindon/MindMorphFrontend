@@ -1,11 +1,23 @@
 import 'package:go_router/go_router.dart';
 import 'package:mindmorph/modules/auth/screens/signup.dart';
-import 'package:mindmorph/modules/home/screens/home.dart';
-import '/modules/auth/screens/login.dart';
+// import 'package:mindmorph/modules/home/presentation/screens/nav_bar.dart';
+// import 'package:mindmorph/modules/profile/screens/acountdetaildemo.dart';
+import 'package:mindmorph/modules/profile/screens/student_profile_screen.dart';
+import '../../modules/home/presentation/screens/home_screen.dart';
+// import '/modules/home/button_nav_bar/presentation/navigation_root.dart';
+import '../../modules/screens/Enrolledcourse/enrollcourse.dart';
+import '../../modules/screens/Enrolledcourse/playvideo.dart';
+import '../../modules/screens/cartscreen/cartscreen.dart';
+import '../../modules/search/presentation/screens/searchpage.dart';
+import '/modules/auth/login/presentation/screens/login.dart';
+import 'intial_route.dart';
+import 'profile.routes.dart';
+import 'course.routes.dart';
 
 final router = GoRouter(
-  initialLocation: '/login',
+  initialLocation: '/initial',
   routes: [
+    initialRoute,
     GoRoute(
       name: 'login',
       path: '/login',
@@ -21,7 +33,64 @@ final router = GoRouter(
       name:
           'home', // Optional, add name to your routes. Allows you navigate by name instead of path
       path: '/home',
-      builder: (context, state) => const Home(),
+      builder: (context, state) =>
+          const HomeScreen(), //NavigationRootScreen(), //const Home(),
     ),
+    GoRoute(
+      name:
+          'profile', // Optional, add name to your routes. Allows you navigate by name instead of path
+      path: '/profile',
+      builder: (context, state) => const Account(),
+    ),
+    GoRoute(
+      name:
+          'cart', // Optional, add name to your routes. Allows you navigate by name instead of path
+      path: '/cart',
+      builder: (context, state) => CartScreen(),
+    ),
+    GoRoute(
+      name:
+          'search', // Optional, add name to your routes. Allows you navigate by name instead of path
+      path: '/search',
+      builder: (context, state) => const Search(),
+    ),
+    // GoRoute(
+    //     name:
+    //         'video-player', // Optional, add name to your routes. Allows you navigate by name instead of path
+    //     path: '/video-player',
+    //     builder: (context, state) {
+    //       String? courseId = state.uri.queryParameters['courseId'];
+
+    //       // ignore: avoid_print
+    //       print(
+    //           'Passed video ID: $courseId  and its type: ${courseId.runtimeType}');
+
+    //       return VideoPlayer(courseId: int.tryParse(courseId ?? '1') ?? 1);
+    //     }),
+    // GoRoute(
+    //   name:
+    //       'demopage', // Optional, add name to your routes. Allows you navigate by name instead of path
+    //   path: '/demopage',
+    //   builder: (context, state) => const DemoPage(),
+    // ),
+
+    //---------------------
+
+    GoRoute(
+      name:
+          'enrolledcourse', // Optional, add name to your routes. Allows you navigate by name instead of path
+      path: '/enrolledcourse',
+      builder: (context, state) => EnrolledCourse(),
+    ),
+
+    GoRoute(
+      name:
+          'playenrollcourse', // Optional, add name to your routes. Allows you navigate by name instead of path
+      path: '/playenrollcourse',
+      builder: (context, state) => const Playenrollcourse(),
+    ),
+
+    ...profileRoutes,
+    ...courseRoutes
   ],
 );

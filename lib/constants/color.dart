@@ -11,3 +11,4 @@ const backgrounghilghtcolor = Color.fromARGB(255, 6, 23, 38);
 const listcolor = Color.fromARGB(255, 38, 47, 67);
 const boxtilecolor = Color.fromARGB(255, 23, 24, 33);
 const subtextcolor = Color.fromARGB(255, 179, 179, 182);
+const textFormFieldColor = Color.fromARGB(255, 137, 165, 204);

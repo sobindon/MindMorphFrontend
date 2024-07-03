@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'package:http_parser/http_parser.dart';
 import 'package:http/http.dart' as http;
+import 'package:mindmorph/constants/urls.dart';
 import '../models/signup.dart';
 
 Future<SignupResponse> signup(UserSignupModel user) async {
-  const mobilePath = '192.168.1.70:8000';
   // const webPath = 'http://127.0.0.1:8000';
-  var uri = Uri.http(mobilePath, 'signup');
+  var uri = Uri.http(NODE_SERVER, '/signup');
 
   try {
     final request = http.MultipartRequest('POST', uri)
@@ -28,7 +28,7 @@ Future<SignupResponse> signup(UserSignupModel user) async {
 
     request.headers.addAll(header);
     final response = await http.Response.fromStream(await request.send());
-
+    // print('Statuc code: ${response.statusCode}');
     final result = json.decode(response.body);
     return SignupResponse(
       status: response.statusCode,
