@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mindmorph/constants/color.dart';
-import 'package:mindmorph/modules/home/models/course_view_model.dart';
+import '../../models/course_carasoul_data_model.dart';
 import 'carousel_course.dart';
 import 'feature_courses.dart';
 import 'scroll_courses_title.dart';
@@ -15,8 +15,8 @@ class HomeContainer extends StatelessWidget {
     required this.newCourses,
   });
 
-  final List<CourseViewModel> trendingCourses;
-  final List<CourseViewModel> newCourses;
+  final List<CourseCarasoulData> trendingCourses;
+  final List<CourseCarasoulData> newCourses;
 
   @override
   Widget build(BuildContext context) {
@@ -40,12 +40,12 @@ class HomeContainer extends StatelessWidget {
                   thickness: 0.8,
                   color: Color.fromARGB(255, 148, 145, 145),
                 ),
-                const ScrollCoursesTitle(title: 'Trending Courses'),
+                const ScrollCoursesTitle(title: 'Recommended Courses'),
+                const FeatureCourseList(),
+                const ScrollCoursesTitle(title: 'Top Rated Courses'),
                 ScrollCourse(courses: trendingCourses),
                 const ScrollCoursesTitle(title: 'New Courses'),
                 ScrollCourse(courses: newCourses),
-                const ScrollCoursesTitle(title: 'Features course'),
-                const FeatureCourseList(),
               ],
             ),
           )),

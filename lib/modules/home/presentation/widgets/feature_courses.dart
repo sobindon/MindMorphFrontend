@@ -5,7 +5,6 @@ import '../../../screens/commonwidget/coursettitle/coursetitle.dart';
 import '/constants/color.dart';
 import '../../../screens/elementlist/imagelist.dart';
 import '../../../screens/elementlist/pricelist.dart';
-import '../../../screens/elementlist/ratingvaluelist.dart';
 import '../../../screens/elementlist/stringlist.dart';
 
 class FeatureCourseList extends StatelessWidget {
@@ -38,8 +37,9 @@ class FeatureCourseList extends StatelessWidget {
                     featurelistRow(
                       image: courselist[index],
                       name: coursedetail[index],
-                      price: pricelist[index],
-                      countstar: ratingcount[index],
+                      price: int.parse(pricelist[index].split('.').last),
+                      discountPercent: 10,
+                      rating: 4,
                     ),
                   ]).box.make(),
                 ),

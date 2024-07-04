@@ -18,8 +18,7 @@ class CourseSections extends StatelessWidget {
         title: 'Course Sections',
         actions: [
           IconButton(
-              onPressed: () => context.go('/home'),
-              icon: const Icon(Icons.home))
+              onPressed: () => context.go('/'), icon: const Icon(Icons.home))
         ],
       ),
       body: Container(

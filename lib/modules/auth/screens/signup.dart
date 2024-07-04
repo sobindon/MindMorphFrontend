@@ -203,18 +203,24 @@ class _SignupState extends State<Signup> {
                                     onPressed: () => context.go('/login'),
                                   ),
                                 );
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(snackBar);
+                                if (context.mounted) {
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
+                                }
                                 Timer(const Duration(seconds: 3),
                                     () => context.go('/login'));
                               } else if (response.status == 500) {
-                                mindMorphSnackBar(
-                                    context: context,
-                                    message: 'Image size is Large ');
+                                if (context.mounted) {
+                                  mindMorphSnackBar(
+                                      context: context,
+                                      message: 'Image size is Large ');
+                                }
                               } else {
-                                mindMorphSnackBar(
-                                    context: context,
-                                    message: response.message);
+                                if (context.mounted) {
+                                  mindMorphSnackBar(
+                                      context: context,
+                                      message: response.message);
+                                }
                               }
                             },
                             child: 'Sign Up'

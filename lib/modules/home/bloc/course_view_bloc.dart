@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import '../data/repositories/course_view_repository.dart';
 
-import '../models/course_view_model.dart';
+import '../models/course_carasoul_data_model.dart';
 
 part 'course_view_event.dart';
 part 'course_view_state.dart';

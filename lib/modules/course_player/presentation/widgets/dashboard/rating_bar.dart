@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
 
 class RatingBar extends StatelessWidget {
-  const RatingBar({super.key, required this.rating});
+  const RatingBar({super.key, required this.rating, this.fontSize});
   final double rating;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
+    double textSize = fontSize ?? 13;
     return Row(
       mainAxisSize: MainAxisSize.min,
-      children: _generateStarIcons(rating),
+      children: [
+        Text(
+          rating.toStringAsFixed(1), //rating == 0 ? '0.0' :
+          style: TextStyle(color: Colors.amber, fontSize: fontSize),
+        ),
+        const SizedBox(width: 7),
+        ..._generateStarIcons(rating, textSize)
+      ],
     );
   }
 
@@ -23,19 +32,19 @@ class RatingBar extends StatelessWidget {
     return Rating(fullStars: fullStars, halfStars: halfStars);
   }
 
-  List<Widget> _generateStarIcons(double rating) {
+  List<Widget> _generateStarIcons(double rating, double iconSize) {
     final starCounts = _convertToStars(rating);
     int emptyStars = 5 - starCounts.fullStars - starCounts.halfStars;
 
     List<Widget> stars = [];
     for (int i = 0; i < starCounts.fullStars; i++) {
-      stars.add(const Icon(Icons.star, color: Colors.amber));
+      stars.add(Icon(Icons.star, color: Colors.amber, size: iconSize));
     }
     for (int i = 0; i < starCounts.halfStars; i++) {
-      stars.add(const Icon(Icons.star_half, color: Colors.amber));
+      stars.add(Icon(Icons.star_half, color: Colors.amber, size: iconSize));
     }
     for (int i = 0; i < emptyStars; i++) {
-      stars.add(const Icon(Icons.star_border, color: Colors.amber));
+      stars.add(Icon(Icons.star_border, color: Colors.amber, size: iconSize));
     }
 
     return stars;

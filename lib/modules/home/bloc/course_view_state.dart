@@ -6,8 +6,8 @@ sealed class CourseViewState {}
 final class CourseViewInitial extends CourseViewState {}
 
 final class CourseViewSuccess extends CourseViewState {
-  final List<CourseViewModel> trendingCourses;
-  final List<CourseViewModel> newCourses;
+  final List<CourseCarasoulData> trendingCourses;
+  final List<CourseCarasoulData> newCourses;
 
   CourseViewSuccess({required this.trendingCourses, required this.newCourses});
 }

@@ -4,8 +4,8 @@ import 'firstscreen.dart';
 import 'secondDraw.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class drawer extends StatelessWidget {
-  const drawer({super.key});
+class CustomDrawer extends StatelessWidget {
+  const CustomDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {

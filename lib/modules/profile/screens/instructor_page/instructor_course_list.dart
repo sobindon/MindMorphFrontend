@@ -3,12 +3,13 @@ import 'package:go_router/go_router.dart';
 import 'package:mindmorph/constants/urls.dart';
 import 'package:mindmorph/widgets/error_page.dart';
 import 'package:mindmorph/widgets/loading_indicator.dart';
+import 'package:velocity_x/velocity_x.dart';
 import '../../data/repositories/course_initialize_submit_repository.dart';
 import '../../models/instructor_course_list_course_server.dart';
 import '/constants/color.dart';
 
 class ListInstructorCourse extends StatelessWidget {
-  ListInstructorCourse({super.key});
+  const ListInstructorCourse({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -89,8 +90,9 @@ class InstructorCoursesView extends StatelessWidget {
                       style: const TextStyle(color: titlecolor, fontSize: 18),
                     ),
                     subtitle: Text(
-                      'Rs ${course.price.toString()}',
-                      style: const TextStyle(color: Colors.amber, fontSize: 14),
+                      'Rs ${course.price!.toDoubleStringAsFixed(digit: 0)}',
+                      style: const TextStyle(
+                          color: Color.fromRGBO(255, 193, 7, 1), fontSize: 14),
                     ),
                   ),
                   // Row(

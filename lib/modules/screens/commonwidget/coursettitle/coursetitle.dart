@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import '../ratingbar.dart';
+import 'package:mindmorph/modules/course_player/presentation/widgets/dashboard/rating_bar.dart';
 import '/constants/color.dart';
 import '/constants/fonts.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 Widget featurelistRow(
     {image,
-    String? name,
-    String? price,
-    int? countstar,
+    required String name,
+    required int price,
+    required double rating,
+    required double discountPercent,
     bool isNetwork = false}) {
   return Expanded(
     child: Container(
@@ -45,25 +46,30 @@ Widget featurelistRow(
               width: double.infinity,
               height: 80,
             ),
-            Container(
-              child: name!.text
-                  .fontFamily(semibold)
-                  .size(2)
-                  .color(titlecolor)
-                  .make(),
-            ),
+            name.text.fontFamily(semibold).size(3).color(titlecolor).make(),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                price!.text.fontFamily(semibold).color(titlecolor).make(),
-                30.widthBox,
-                Expanded(
-                  child: SizedBox(
-                      height: 10,
-                      width: 30,
-                      child: ratingbar(10, 0.01, countstar!)),
-                ),
+                if (discountPercent > 0)
+                  'Rs $price'
+                      .text
+                      .color(const Color.fromRGBO(158, 158, 158, 1))
+                      .lineThrough
+                      .make(),
+                'Rs ${(price - (price * (100 - discountPercent) / 100)).toDoubleStringAsFixed(digit: 0)}'
+                    .text
+                    .color(Colors.amber)
+                    .make()
+
+                // 'Rs $price'
+                //     .text
+                //     .fontFamily(semibold)
+                //     .color(titlecolor)
+                //     .size(2)
+                //     .make(),
               ],
             ),
+            RatingBar(rating: rating),
           ],
         ),
       ),

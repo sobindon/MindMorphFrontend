@@ -7,9 +7,9 @@ import '../../modules/home/presentation/screens/home_screen.dart';
 // import '/modules/home/button_nav_bar/presentation/navigation_root.dart';
 import '../../modules/screens/Enrolledcourse/enrollcourse.dart';
 import '../../modules/screens/Enrolledcourse/playvideo.dart';
-import '../../modules/screens/cartscreen/cartscreen.dart';
 import '../../modules/search/presentation/screens/searchpage.dart';
 import '/modules/auth/login/presentation/screens/login.dart';
+import 'cart.routes.dart';
 import 'intial_route.dart';
 import 'profile.routes.dart';
 import 'course.routes.dart';
@@ -32,7 +32,7 @@ final router = GoRouter(
     GoRoute(
       name:
           'home', // Optional, add name to your routes. Allows you navigate by name instead of path
-      path: '/home',
+      path: '/',
       builder: (context, state) =>
           const HomeScreen(), //NavigationRootScreen(), //const Home(),
     ),
@@ -42,12 +42,7 @@ final router = GoRouter(
       path: '/profile',
       builder: (context, state) => const Account(),
     ),
-    GoRoute(
-      name:
-          'cart', // Optional, add name to your routes. Allows you navigate by name instead of path
-      path: '/cart',
-      builder: (context, state) => CartScreen(),
-    ),
+
     GoRoute(
       name:
           'search', // Optional, add name to your routes. Allows you navigate by name instead of path
@@ -91,6 +86,7 @@ final router = GoRouter(
     ),
 
     ...profileRoutes,
-    ...courseRoutes
+    ...courseRoutes,
+    ...cartRoutes,
   ],
 );

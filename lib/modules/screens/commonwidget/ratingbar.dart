@@ -17,7 +17,7 @@ Widget ratingbar(double size, double paddingsize, int starcount) {
           itemPadding: EdgeInsets.symmetric(horizontal: 0.1 * paddingsize),
           itemBuilder: (context, index) {
             if (index < initialRating) {
-              return Icon(
+              return const Icon(
                 Icons.star,
                 color: Colors.amber, // Color for rated stars
               );

@@ -12,7 +12,7 @@ class ScrollCoursesTitle extends StatelessWidget {
       padding: const EdgeInsets.only(top: 20, bottom: 5),
       child: Align(
         alignment: Alignment.topLeft,
-        child: title.text.color(featureColor).bold.size(25).make(),
+        child: title.text.color(featureColor).bold.size(20).make(),
       ),
     );
   }

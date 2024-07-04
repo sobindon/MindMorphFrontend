@@ -28,13 +28,12 @@ class InstructorCourseModel {
           json.decode(response).map((x) => InstructorCourseModel._fromJson(x)));
 
   @override
-  String toString() =>
-      "_id: " +
+  String toString() => "_id: "
       '$id, ${id.runtimeType}\n+'
-          "courseId: " +
+      "courseId: "
       '$courseId, ${courseId.runtimeType}\n+'
-          "title: " +
+      "title: "
       '$title, ${title.runtimeType}\n+'
-          "courseThumbnailUrl: " +
+      "courseThumbnailUrl: "
       '$courseThumbnailUrl,${courseThumbnailUrl.runtimeType}\n';
 }

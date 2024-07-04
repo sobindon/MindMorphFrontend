@@ -4,9 +4,11 @@ import '../../data/repositories/course_repository.dart';
 import '../widgets/dashboard_view.dart';
 
 class CourseDashboard extends StatelessWidget {
-  const CourseDashboard({super.key, required this.courseId});
+  const CourseDashboard(
+      {super.key, required this.courseId, this.areSectionsPlayAble = false});
 
   final int courseId;
+  final bool areSectionsPlayAble;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,9 @@ class CourseDashboard extends StatelessWidget {
             return const Center(child: Text('No data available'));
           } else {
             final courseData = snapshot.data!;
-            return DashboardView(courseData: courseData);
+            return DashboardView(
+                courseData: courseData,
+                areSectionsPlayAble: areSectionsPlayAble);
           }
         },
       ),

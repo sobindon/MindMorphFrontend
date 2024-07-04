@@ -36,7 +36,7 @@ class CourseModel {
         language: json["language"],
         price: json["price"],
         discountPercent: json["discountPercent"] ?? 0,
-        rating: json["rating"] ?? 0.0,
+        rating: json["rating"] != null ? (json["rating"] * 10) / 10 : 0.0,
         ratingCount: json["ratingCount"],
         enrollCount: json["enrollCount"],
         createdAt: DateTime.parse(json["createdAt"]),

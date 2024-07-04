@@ -1,7 +1,5 @@
 import 'dart:convert';
-
 import 'package:mindmorph/modules/auth/login/data/local_storage/user_storage.dart';
-
 import '../../models/instructor_course_list_course_server.dart';
 import '../../models/courses_details.dart';
 import '../providers/course_by_instructor.dart';

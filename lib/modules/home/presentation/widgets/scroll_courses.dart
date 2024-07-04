@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '/modules/home/models/course_view_model.dart';
+import '../../models/course_carasoul_data_model.dart';
 import '/constants/color.dart';
 import '/constants/urls.dart';
 import '../../../screens/commonwidget/coursettitle/coursetitle.dart';
@@ -9,7 +9,7 @@ import '../../../screens/commonwidget/coursettitle/coursetitle.dart';
 class ScrollCourse extends StatelessWidget {
   const ScrollCourse({super.key, required this.courses});
 
-  final List<CourseViewModel> courses;
+  final List<CourseCarasoulData> courses;
 
   @override
   Widget build(BuildContext context) {
@@ -40,11 +40,12 @@ class ScrollCourse extends StatelessWidget {
                     children: [
                       featurelistRow(
                           image:
-                              'http://$NODE_SERVER/${courses[index].thumbnail}',
+                              'http://$COURSE_SERVER/${courses[index].courseThumbnailUrl}',
                           name: courses[index].title,
-                          price: courses[index].price.toString(),
-                          countstar: courses[index].rating,
-                          isNetwork: true),
+                          price: courses[index].price,
+                          rating: courses[index].rating,
+                          isNetwork: true,
+                          discountPercent: courses[index].discountPercent),
                     ],
                   ).box.make(),
                 ),

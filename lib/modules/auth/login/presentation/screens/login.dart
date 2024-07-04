@@ -23,7 +23,7 @@ class Login extends StatelessWidget {
             ),
           );
         } else if (state is LoginSuccess) {
-          context.go('/home');
+          context.go('/');
         }
       }), builder: (context, state) {
         if (state is LoginLoading) {

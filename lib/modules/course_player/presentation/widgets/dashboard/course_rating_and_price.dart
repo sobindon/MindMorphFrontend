@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mindmorph/constants/color.dart';
-import 'package:mindmorph/constants/fonts.dart';
 import 'package:mindmorph/modules/course_player/models/course_model.dart';
 import 'package:mindmorph/modules/course_player/presentation/widgets/dashboard/rating_bar.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -14,27 +12,16 @@ class CourseRatingAndPrice extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(
-          children: [
-            'Rating'
-                .text
-                .size(16)
-                .fontFamily(semibold)
-                .color(subtexColor)
-                .make(),
-            const SizedBox(width: 10),
-            RatingBar(rating: course.rating),
-          ],
-        ),
+        RatingBar(rating: course.rating, fontSize: 15),
         Row(
           children: [
             if (course.discountPercent > 0)
               'Rs ${course.price}'.text.color(Colors.grey).lineThrough.make(),
-            'Rs ${course.price - (course.price * (100 - course.discountPercent) / 100)}'
+            '     Rs ${(course.price - (course.price * (100 - course.discountPercent) / 100)).toDoubleStringAsFixed(digit: 0)}'
                 .text
                 .color(Colors.amber)
                 .make(),
-            const SizedBox(width: 30),
+            const SizedBox(width: 10),
           ],
         ),
       ],
