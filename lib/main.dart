@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'config/themes/theme.dart';
+
 import 'config/routes/route.dart';
+import 'config/themes/theme.dart';
 import 'modules/auth/login/bloc/login_bloc.dart';
 import 'modules/upload_course/bloc/course_init/course_initialize_bloc.dart';
 
